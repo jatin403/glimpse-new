@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react";
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { eventNames } from "process";
 import { ElementRef, useEffect, useRef, useState } from "react";
@@ -137,6 +137,11 @@ export const Navigation = () => {
                 </div>
                 <div className="mt-4">
                     <DocumentList />
+                    <Item
+                        onClick={handleCreate}
+                        icon={Plus}
+                        label="Add a Glimpse"
+                    />
                 </div>
                 <div
                     onMouseDown={handleMouseDown}
