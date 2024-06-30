@@ -32,7 +32,7 @@ const DocumentsPage = () => {
                 className="dark:hidden"
             />
             <Image
-                src="/giant-pencil-illustration.webp"
+                src="/giant-pencil-illustration-modified.webp"
                 height="300"
                 width="300"
                 alt="Empty"
