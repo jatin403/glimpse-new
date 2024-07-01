@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { eventNames } from "process";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -24,6 +24,7 @@ export const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)");
     const params = useParams();
+    const router = useRouter();
 
     const create = useMutation(api.documents.create);
 
@@ -107,7 +108,8 @@ export const Navigation = () => {
     };
 
     const handleCreate = () => {
-        const promise = create({title: "Untitled"});
+        const promise = create({title: "Untitled"})
+            .then((documentId) => router.push(`/documents/${documentId}`))
         toast.promise(promise, {
             loading: "Getting a new glimpse",
             success: "New glimpse created!",
